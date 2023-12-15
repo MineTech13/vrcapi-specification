@@ -11,16 +11,11 @@ jobs:
     strategy:
       matrix:
         project:
-          - javascript
-          - csharp
-          - python
           - java
-          - rust
-          - elixir
     steps:
       - name: Triggering build SDK - ${{ matrix.node }}
         run: |
-          curl -X POST https://api.github.com/repos/vrchatapi/vrchatapi-${{ matrix.project }}/dispatches \
+          curl -X POST https://api.github.com/repos/minetech13/vrcapi-${{ matrix.project }}/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "spec_release"}'
