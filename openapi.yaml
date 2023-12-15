@@ -5194,6 +5194,11 @@ components:
           $ref: '#/components/schemas/CurrentAvatarImageUrl'
         currentAvatarThumbnailImageUrl:
           $ref: '#/components/schemas/CurrentAvatarThumbnailImageUrl'
+        currentAvatarTags:
+          description: <- Always empty.
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
         developerType:
           $ref: '#/components/schemas/DeveloperType'
         displayName:
@@ -5229,6 +5234,8 @@ components:
         location:
           type: string
         friendKey:
+          type: string
+        last_login:
           type: string
       required:
         - id
