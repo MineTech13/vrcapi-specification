@@ -16,6 +16,11 @@ properties:
     $ref: ./CurrentAvatarImageUrl.yaml
   currentAvatarThumbnailImageUrl:
     $ref: ./CurrentAvatarThumbnailImageUrl.yaml
+  currentAvatarTags:
+    description: <- Always empty.
+    items:
+      $ref: ./Tag.yaml
+    type: array
   date_joined:
     format: date
     type: string

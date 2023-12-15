@@ -3,10 +3,9 @@ properties:
   bio:
     type: string
   bioLinks:
-    description: <- Always empty.
-    items:
-      $ref: ./Link.yaml
     type: array
+    items:
+      type: string
   currentAvatarImageUrl:
     $ref: ./CurrentAvatarImageUrl.yaml
   currentAvatarThumbnailImageUrl:

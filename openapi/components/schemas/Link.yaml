@@ -1,4 +1,0 @@
-description: URL to a link.
-minLength: 1
-title: Link
-type: string
