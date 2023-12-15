@@ -5175,12 +5175,20 @@ components:
         - maxParts
         - parts
         - etags
+    Link:
+      description: URL to a link.
+      minLength: 1
+      title: Link
+      type: string
     LimitedUser:
       description: ''
       properties:
         bio:
           type: string
         bioLinks:
+          description: <- Always empty.
+          items:
+            $ref: '#/components/schemas/Link'
           type: array
         currentAvatarImageUrl:
           $ref: '#/components/schemas/CurrentAvatarImageUrl'
