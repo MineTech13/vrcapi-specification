@@ -2,6 +2,8 @@ description: ''
 properties:
   bio:
     type: string
+  bioLinks:
+    type: array
   currentAvatarImageUrl:
     $ref: ./CurrentAvatarImageUrl.yaml
   currentAvatarThumbnailImageUrl:
