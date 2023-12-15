@@ -11,6 +11,11 @@ properties:
     $ref: ./CurrentAvatarImageUrl.yaml
   currentAvatarThumbnailImageUrl:
     $ref: ./CurrentAvatarThumbnailImageUrl.yaml
+  currentAvatarTags:
+    description: <- Always empty.
+    items:
+      $ref: ./Tag.yaml
+    type: array
   developerType:
     $ref: ./DeveloperType.yaml
   displayName:
@@ -44,6 +49,8 @@ properties:
   location:
     type: string
   friendKey:
+    type: string
+  last_login:
     type: string
 required:
   - id
