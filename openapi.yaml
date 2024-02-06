@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: VRChat API Documentation
-  version: 1.15.3
+  version: 1.15.0
   contact:
     name: Unofficial VRChat API Documentation Project
     url: https://github.com/VRChatAPI
@@ -5180,19 +5180,10 @@ components:
       properties:
         bio:
           type: string
-        bioLinks:
-          type: array
-          items:
-            type: string
         currentAvatarImageUrl:
           $ref: '#/components/schemas/CurrentAvatarImageUrl'
         currentAvatarThumbnailImageUrl:
           $ref: '#/components/schemas/CurrentAvatarThumbnailImageUrl'
-        currentAvatarTags:
-          description: <- Always empty.
-          items:
-            $ref: '#/components/schemas/Tag'
-          type: array
         developerType:
           $ref: '#/components/schemas/DeveloperType'
         displayName:
@@ -5228,8 +5219,6 @@ components:
         location:
           type: string
         friendKey:
-          type: string
-        last_login:
           type: string
       required:
         - id
@@ -7518,11 +7507,6 @@ components:
           $ref: '#/components/schemas/CurrentAvatarImageUrl'
         currentAvatarThumbnailImageUrl:
           $ref: '#/components/schemas/CurrentAvatarThumbnailImageUrl'
-        currentAvatarTags:
-          description: <- Always empty.
-          items:
-            $ref: '#/components/schemas/Tag'
-          type: array
         date_joined:
           format: date
           type: string
