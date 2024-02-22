@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: VRChat API Documentation
-  version: 1.16.4
+  version: 1.16.5
   contact:
     name: Unofficial VRChat API Documentation Project
     url: https://github.com/VRChatAPI
@@ -4182,7 +4182,7 @@ components:
         pluginUrl: ''
         pluginUrlObject: {}
         unitySortNumber: 20180414000
-        unityVersion: 2018.4.14f1
+        unityVersion: 2022.3.6f1
       properties:
         id:
           $ref: '#/components/schemas/UnityPackageID'
@@ -4210,7 +4210,7 @@ components:
           format: int64
         unityVersion:
           default: 5.3.4p1
-          example: 2018.4.12f1
+          example: 2022.3.6f1
           minLength: 1
           type: string
         impostorUrl:
@@ -4380,6 +4380,11 @@ components:
           default: 1
         unityPackageUrl:
           type: string
+        unityVersion:
+          type: string
+          minLength: 1
+          default: 5.3.4p1
+          example: 2022.3.6f1
       required:
         - name
         - imageUrl
@@ -4413,6 +4418,11 @@ components:
           default: 1
         unityPackageUrl:
           type: string
+        unityVersion:
+          type: string
+          minLength: 1
+          default: 5.3.4p1
+          example: 2022.3.6f1
     TransactionID:
       example: txn_e5c72948-e735-4880-8245-24b2a41198b0
       title: TransactionID
@@ -6109,6 +6119,55 @@ components:
         isRepresenting:
           type: boolean
           default: false
+          example: true
+          description: >-
+            Whether the user is representing the group. This makes the group
+            show up above the name tag in-game.
+        roleIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRoleID'
+        mRoleIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRoleID'
+        joinedAt:
+          type: string
+          format: date-time
+        membershipStatus:
+          type: string
+          example: member
+        visibility:
+          type: string
+          example: visible
+        isSubscribedToAnnouncements:
+          type: boolean
+          default: false
+        createdAt:
+          description: >-
+            Only visible via the /groups/:groupId/members endpoint, **not** when
+            fetching a specific user.
+          type: string
+          format: date-time
+          nullable: true
+        bannedAt:
+          description: >-
+            Only visible via the /groups/:groupId/members endpoint, **not** when
+            fetching a specific user.
+          type: string
+          format: date-time
+          nullable: true
+        managerNotes:
+          description: >-
+            Only visible via the /groups/:groupId/members endpoint, **not** when
+            fetching a specific user.
+          type: string
+          nullable: true
+        lastPostReadAt:
+          type: string
+          format: date-time
+        hasJoinedFromPurchase:
+          type: boolean
     GroupUserVisibility:
       example: visible
       title: GroupUserVisibility
@@ -7709,7 +7768,7 @@ components:
         platform:
           $ref: '#/components/schemas/Platform'
         unityVersion:
-          example: 2018.4.14f1
+          example: 2022.3.6f1
           minLength: 1
           type: string
       required:
@@ -7870,7 +7929,7 @@ components:
           type: string
           minLength: 1
           default: 5.3.4p1
-          example: 2018.4.20f1
+          example: 2022.3.6f1
       required:
         - assetUrl
         - imageUrl
@@ -8065,7 +8124,7 @@ components:
           type: string
           minLength: 1
           default: 5.3.4p1
-          example: 2018.4.20f1
+          example: 2022.3.6f1
     WorldMetadata:
       title: WorldMetadata
       type: object
