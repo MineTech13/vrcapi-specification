@@ -4,6 +4,26 @@ info:
   version: '1.0'
   description: Instances Docs Here
 paths:
+  '/instances':
+    post:
+      summary: Create Instance
+      tags:
+        - instances
+      operationId: createInstance
+      security:
+        - authCookie: []
+      description: Create an instance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../requests/CreateInstanceRequest.yaml
+      responses:
+        '200':
+          $ref: ../responses/instances/InstanceResponse.yaml
+        '401':
+          $ref: ../responses/MissingCredentialsError.yaml
   '/instances/{worldId}:{instanceId}':
     parameters:
       - $ref: ../parameters.yaml#/worldId
@@ -26,6 +46,41 @@ paths:
           $ref: ../responses/instances/InstanceResponse.yaml
         '401':
           $ref: ../responses/MissingCredentialsError.yaml
+    delete:
+      summary: Close Instance
+      tags:
+        - instances
+      operationId: closeInstance
+      security:
+        - authCookie: []
+      parameters:
+        - in: query
+          name: hardClose
+          schema:
+            type: boolean
+          required: false
+          description: Whether to hard close the instance. Defaults to false.
+        - in: query
+          name: closedAt
+          schema:
+            type: string
+            format: date-time
+          description: |-
+            The time after which users won't be allowed to join the instances.
+            If omitted, the instance will be closed immediately.
+      description: |-
+        Close an instance or update the closedAt time when it will be closed.
+
+        You can only close an instance if the ownerId is yourself or if the instance owner is a group and you have the `group-instance-moderate` permission.
+      responses:
+        '200':
+          $ref: ../responses/instances/InstanceResponse.yaml
+        '401':
+          $ref: ../responses/MissingCredentialsError.yaml
+        '403':
+          $ref: ../responses/instances/InstanceCloseForbiddenError.yaml
+        '404':
+          $ref: ../responses/instances/InstanceNotFoundError.yaml
   '/instances/{worldId}:{instanceId}/shortName':
     parameters:
       - $ref: ../parameters.yaml#/worldId

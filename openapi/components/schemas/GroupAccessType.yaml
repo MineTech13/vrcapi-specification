@@ -1,0 +1,9 @@
+type: string
+title: GroupAccessType
+example: members
+enum:
+  - public
+  - plus
+  - members
+description: Group access type when the instance type is "group"
+default: members

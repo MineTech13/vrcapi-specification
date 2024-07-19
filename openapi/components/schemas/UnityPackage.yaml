@@ -1,6 +1,6 @@
 description: ''
 example:
-  assetUrl: 'https://api.vrchat.cloud/api/1/file/file_cd0caa7b-69ba-4715-8dfe-7d667a9d2537/65/file'
+  assetUrl: 'https://vrchat.com/api/1/file/file_cd0caa7b-69ba-4715-8dfe-7d667a9d2537/65/file'
   assetUrlObject: {}
   assetVersion: 4
   created_at: '2020-09-10T06:13:27.777Z'
@@ -9,12 +9,11 @@ example:
   pluginUrl: ''
   pluginUrlObject: {}
   unitySortNumber: 20180414000
-  unityVersion: 2018.4.14f1
+  unityVersion: 2022.3.6f1
 properties:
   id:
     $ref: ./UnityPackageID.yaml
   assetUrl:
-    minLength: 1
     type: string
     nullable: true
   assetUrlObject:
@@ -37,13 +36,15 @@ properties:
     format: int64
   unityVersion:
     default: 5.3.4p1
-    example: 2018.4.12f1
+    example: 2022.3.6f1
     minLength: 1
     type: string
   impostorUrl:
     type: string
     nullable: true
   scanStatus:
+    type: string
+  variant:
     type: string
 required:
   - id

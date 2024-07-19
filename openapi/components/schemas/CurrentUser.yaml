@@ -24,6 +24,11 @@ properties:
       $ref: ./UserID.yaml
   allowAvatarCopying:
     type: boolean
+  badges:
+    description: ' '
+    type: array
+    items:
+      $ref: ./Badge.yaml
   bio:
     type: string
   bioLinks:
@@ -86,6 +91,9 @@ properties:
     $ref: ./WorldID.yaml
   id:
     $ref: ./UserID.yaml
+  isBoopingEnabled:
+    default: true
+    type: boolean
   isFriend:
     default: false
     type: boolean
@@ -95,6 +103,10 @@ properties:
   last_login:
     format: date-time
     type: string
+  last_mobile:
+    format: date-time
+    type: string
+    nullable: true
   last_platform:
     $ref: ./Platform.yaml
   obfuscatedEmail:
@@ -105,6 +117,8 @@ properties:
     type: string
   googleId:
     type: string
+  googleDetails:
+    type: object
   picoId:
     type: string
   viveId:
@@ -125,6 +139,10 @@ properties:
   presence:
     $ref: ./CurrentUserPresence.yaml
   profilePicOverride:
+    type: string
+  profilePicOverrideThumbnail:
+    type: string
+  pronouns:
     type: string
   state:
     $ref: ./UserState.yaml
@@ -171,6 +189,8 @@ required:
   - bio
   - bioLinks
   - profilePicOverride
+  - profilePicOverrideThumbnail
+  - pronouns
   - statusDescription
   - pastDisplayNames
   - hasEmail
@@ -186,6 +206,7 @@ required:
   - friendGroupNames
   - currentAvatarImageUrl
   - currentAvatarThumbnailImageUrl
+  - currentAvatarTags
   - currentAvatar
   - currentAvatarAssetUrl
   - acceptedTOSVersion
@@ -199,6 +220,7 @@ required:
   - tags
   - developerType
   - last_login
+  - last_mobile
   - last_platform
   - allowAvatarCopying
   - status

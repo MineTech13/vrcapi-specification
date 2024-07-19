@@ -4,6 +4,11 @@ properties:
   allowAvatarCopying:
     type: boolean
     default: true
+  badges:
+    description: ' '
+    type: array
+    items:
+      $ref: ./Badge.yaml
   bio:
     type: string
     maxLength: 512
@@ -16,6 +21,10 @@ properties:
     $ref: ./CurrentAvatarImageUrl.yaml
   currentAvatarThumbnailImageUrl:
     $ref: ./CurrentAvatarThumbnailImageUrl.yaml
+  currentAvatarTags:
+    type: array
+    items:
+      $ref: ./Tag.yaml
   date_joined:
     format: date
     type: string
@@ -48,6 +57,10 @@ properties:
   note:
     type: string
   profilePicOverride:
+    type: string
+  profilePicOverrideThumbnail:
+    type: string
+  pronouns:
     type: string
   state:
     $ref: ./UserState.yaml
@@ -83,6 +96,7 @@ required:
   - bioLinks
   - currentAvatarImageUrl
   - currentAvatarThumbnailImageUrl
+  - currentAvatarTags
   - date_joined
   - developerType
   - displayName
@@ -93,6 +107,8 @@ required:
   - last_login
   - last_platform
   - profilePicOverride
+  - profilePicOverrideThumbnail
+  - pronouns
   - state
   - status
   - statusDescription

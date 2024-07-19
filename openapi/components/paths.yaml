@@ -116,8 +116,8 @@
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1galleries~1{groupGalleryId}~1images"
 "/groups/{groupId}/galleries/{groupGalleryId}/images/{groupGalleryImageId}":
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1galleries~1{groupGalleryId}~1images~1{groupGalleryImageId}"
-# "/groups/{groupId}/instances":
-#   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1instances"
+"/groups/{groupId}/instances":
+  $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1instances"
 "/groups/{groupId}/invites":
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1invites"
 "/groups/{groupId}/invites/{userId}":
@@ -134,6 +134,10 @@
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1members~1{userId}~1roles~1{groupRoleId}"
 "/groups/{groupId}/permissions":
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1permissions"
+"/groups/{groupId}/posts":
+  $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1posts"
+"/groups/{groupId}/posts/{notificationId}":
+  $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1posts~1{notificationId}"
 "/groups/{groupId}/requests":
   $ref: "./paths/groups.yaml#/paths/~1groups~1{groupId}~1requests"
 "/groups/{groupId}/requests/{userId}":
@@ -160,6 +164,8 @@
 
 # instances
 
+"/instances":
+  $ref: "./paths/instances.yaml#/paths/~1instances"
 "/instances/{worldId}:{instanceId}":
   $ref: "./paths/instances.yaml#/paths/~1instances~1{worldId}:{instanceId}"
 "/instances/{worldId}:{instanceId}/shortName":
@@ -231,6 +237,8 @@
   $ref: "./paths/users.yaml#/paths/~1users~1{userId}~1groups"
 "/users/{userId}/groups/requested":
   $ref: "./paths/users.yaml#/paths/~1users~1{userId}~1groups~1requested"
+"/users/{userId}/groups/represented":
+  $ref: "./paths/users.yaml#/paths/~1users~1{userId}~1groups~1represented"
 
 # worlds
 

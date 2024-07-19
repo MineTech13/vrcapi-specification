@@ -113,7 +113,7 @@ paths:
         - authCookie: []
       responses:
         '200':
-          $ref: ../responses/groups/GroupListResponse.yaml
+          $ref: ../responses/users/LimitedUserGroupListResponse.yaml
         '401':
           $ref: ../responses/MissingCredentialsError.yaml
       operationId: getUserGroups
@@ -171,6 +171,26 @@ paths:
         '200':
           $ref: ../responses/groups/GroupListResponse.yaml
         '401':
+          $ref: ../responses/MissingCredentialsError.yaml
+      security:
+        - authCookie: []
+  "/users/{userId}/groups/represented":
+    parameters:
+      - $ref: ../parameters.yaml#/userId
+    get:
+      summary: Get user's current represented group
+      description: Returns the current group that the user is currently representing
+      operationId: getUserRepresentedGroup
+      tags:
+        - users
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/representedGroup.yaml
+        "401":
           $ref: ../responses/MissingCredentialsError.yaml
       security:
         - authCookie: []
