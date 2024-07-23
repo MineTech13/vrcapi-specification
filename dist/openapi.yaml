@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: VRChat API Documentation
-  version: dev003
+  version: dev004
   contact:
     name: Unofficial VRChat API Documentation Project
     url: https://github.com/VRChatAPI
@@ -7619,6 +7619,10 @@ components:
           description: Either a date-time or empty string.
         last_platform:
           $ref: '#/components/schemas/Platform'
+        last_mobile:
+          type: string
+          format: date-time
+          description: Either a date-time or empty string.
         location:
           $ref: '#/components/schemas/WorldID'
         note:
