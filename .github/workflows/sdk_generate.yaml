@@ -13,7 +13,7 @@ jobs:
         project:
           - java
     steps:
-      - name: Triggering build SDK - ${{ matrix.node }}
+      - name: Triggering build SDK - ${{ matrix.project }}
         run: |
           curl -X POST https://api.github.com/repos/minetech13/vrcapi-${{ matrix.project }}/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
