@@ -51,7 +51,7 @@ jobs:
 
   pages:
     # Only if dev branch
-    if: github.ref == 'refs/heads/deb'
+    if: github.ref == 'refs/heads/dev'
     needs: bundle
     runs-on: ubuntu-latest
     name: Upload OpenAPI specification to GitHub Pages
