@@ -5133,6 +5133,9 @@ components:
           type: string
         friendKey:
           type: string
+        last_login:
+          type: string
+          format: date-time
       required:
         - id
         - displayName
@@ -7616,6 +7619,10 @@ components:
           description: Either a date-time or empty string.
         last_platform:
           $ref: '#/components/schemas/Platform'
+        last_mobile:
+          type: string
+          format: date-time
+          description: Either a date-time or empty string.
         location:
           $ref: '#/components/schemas/WorldID'
         note:
