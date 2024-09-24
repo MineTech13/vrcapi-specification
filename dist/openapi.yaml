@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: VRChat API Documentation
-  version: 1.18.4
+  version: dev006
   contact:
     name: Unofficial VRChat API Documentation Project
     url: https://github.com/VRChatAPI
@@ -48,7 +48,8 @@ info:
     </div>
 
     <div class="callout callout-info">
-      <strong>ℹ️ Authentication</strong><br>
+      <strong>ℹ️ API Key and Authentication</strong><br>
+      The API Key has always been the same and is currently <code>JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26</code>.
       Read <a href="#tag--authentication">Authentication</a> for how to log in.
     </div>
 
@@ -92,7 +93,7 @@ info:
 
     [![Discord](https://img.shields.io/static/v1?label=vrchatapi&message=discord&color=blueviolet&style=for-the-badge)](https://discord.gg/qjZE9C9fkB)
 servers:
-  - url: https://vrchat.com/api/1
+  - url: https://api.vrchat.cloud/api/1
 tags:
   - name: authentication
     description: Authentication Docs Here
@@ -8077,62 +8078,6 @@ components:
           default: true
       required:
         - canPublish
-    NotificationDetailInvite:
-      properties:
-        inviteMessage:
-          type: string
-        worldId:
-          $ref: '#/components/schemas/WorldID'
-        worldName:
-          type: string
-      required:
-        - worldId
-        - worldName
-      title: NotificationDetailInvite
-      type: object
-    NotificationDetailInviteResponse:
-      properties:
-        inResponseTo:
-          $ref: '#/components/schemas/NotificationID'
-        responseMessage:
-          type: string
-      required:
-        - inResponseTo
-        - responseMessage
-      title: NotificationDetailInviteResponse
-      type: object
-    NotificationDetailRequestInvite:
-      properties:
-        platform:
-          description: 'TODO: Does this still exist?'
-          type: string
-        requestMessage:
-          description: Used when using InviteMessage Slot.
-          type: string
-      title: NotificationDetailRequestInvite
-      type: object
-    NotificationDetailRequestInviteResponse:
-      properties:
-        inResponseTo:
-          $ref: '#/components/schemas/NotificationID'
-        requestMessage:
-          description: Used when using InviteMessage Slot.
-          type: string
-      required:
-        - inResponseTo
-      title: NotificationDetailRequestInviteResponse
-      type: object
-    NotificationDetailVoteToKick:
-      properties:
-        initiatorUserId:
-          $ref: '#/components/schemas/UserID'
-        userToKickId:
-          $ref: '#/components/schemas/UserID'
-      required:
-        - userToKickId
-        - initiatorUserId
-      title: NotificationDetailVoteToKick
-      type: object
   securitySchemes:
     authHeader:
       type: http
