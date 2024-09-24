@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: VRChat API Documentation
-  version: 1.18.4
+  version: dev005
   contact:
     name: Unofficial VRChat API Documentation Project
     url: https://github.com/VRChatAPI
@@ -1798,7 +1798,6 @@ paths:
         - $ref: '#/components/parameters/number'
         - $ref: '#/components/parameters/offset'
         - $ref: '#/components/parameters/groupMemberSort'
-        - $ref: '#/components/parameters/groupMemberRoleFilter'
       responses:
         '200':
           $ref: '#/components/responses/GroupMemberListResponse'
@@ -3708,8 +3707,6 @@ components:
         avatarThumbnail:
           type: string
           nullable: true
-        currentAvatarTags:
-          type: string
         displayName:
           type: string
         groups:
@@ -3745,9 +3742,6 @@ components:
           nullable: true
         travelingToWorld:
           $ref: '#/components/schemas/WorldID'
-          nullable: true
-        userIcon:
-          type: string
           nullable: true
         world:
           $ref: '#/components/schemas/WorldID'
@@ -3924,11 +3918,6 @@ components:
           type: string
         pronouns:
           type: string
-        queuedInstance:
-          type: string
-          nullable: true
-        receiveMobileInvitations:
-          type: boolean
         state:
           $ref: '#/components/schemas/UserState'
         status:
@@ -3966,6 +3955,8 @@ components:
           type: string
           deprecated: true
           description: '-| **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429).'
+        receiveMobileInvitations:
+          type: boolean
       required:
         - id
         - displayName
@@ -4077,56 +4068,43 @@ components:
       example: unp_52b12c39-4163-457d-a4a9-630e7aff1bff
       title: UnityPackageID
       type: string
-    PerformanceRatings:
-      type: string
-      title: PerformanceRatings
-      example: Excellent
-      enum:
-        - None
-        - Excellent
-        - Good
-        - Medium
-        - Poor
-        - VeryPoor
-      description: Avatar Performance ratings.
     UnityPackage:
       description: ''
+      example:
+        assetUrl: https://vrchat.com/api/1/file/file_cd0caa7b-69ba-4715-8dfe-7d667a9d2537/65/file
+        assetUrlObject: {}
+        assetVersion: 4
+        created_at: '2020-09-10T06:13:27.777Z'
+        id: unp_52b12c39-4163-457d-a4a9-630e7aff1bff
+        platform: standalonewindows
+        pluginUrl: ''
+        pluginUrlObject: {}
+        unitySortNumber: 20180414000
+        unityVersion: 2022.3.6f1
       properties:
         id:
           $ref: '#/components/schemas/UnityPackageID'
         assetUrl:
           type: string
           nullable: true
-          example: https://vrchat.com/api/1/file/file_cd0caa7b-69ba-4715-8dfe-7d667a9d2537/65/file
         assetUrlObject:
           type: object
-          example: {}
         assetVersion:
           minimum: 0
           type: integer
-          example: 4
         created_at:
           format: date-time
           type: string
-          example: '2020-09-10T06:13:27.777Z'
-        impostorizerVersion:
-          type: string
-          example: 0.17.0
-        performanceRating:
-          $ref: '#/components/schemas/PerformanceRatings'
         platform:
           $ref: '#/components/schemas/Platform'
         pluginUrl:
           type: string
-          example: ''
         pluginUrlObject:
           type: object
-          example: {}
         unitySortNumber:
           minimum: 0
           type: integer
           format: int64
-          example: 20180414000
         unityVersion:
           default: 5.3.4p1
           example: 2022.3.6f1
@@ -4289,7 +4267,7 @@ components:
         releaseStatus:
           $ref: '#/components/schemas/ReleaseStatus'
         version:
-          type: integer
+          type: number
           minimum: 0
           default: 1
         unityPackageUrl:
@@ -4327,7 +4305,7 @@ components:
         releaseStatus:
           $ref: '#/components/schemas/ReleaseStatus'
         version:
-          type: integer
+          type: number
           minimum: 0
           default: 1
         unityPackageUrl:
@@ -4396,7 +4374,7 @@ components:
         period:
           $ref: '#/components/schemas/SubscriptionPeriod'
         tier:
-          type: integer
+          type: number
       required:
         - id
         - steamItemId
@@ -4471,7 +4449,7 @@ components:
           type: string
           minLength: 1
         itemId:
-          type: integer
+          type: number
         agreement:
           type: string
         status:
@@ -4482,7 +4460,7 @@ components:
           type: string
           minLength: 1
         frequency:
-          type: integer
+          type: number
         billingType:
           type: string
           minLength: 1
@@ -4511,9 +4489,9 @@ components:
         lastAmountVat:
           type: number
         outstanding:
-          type: integer
+          type: number
         failedAttempts:
-          type: integer
+          type: number
       required:
         - agreementId
         - itemId
@@ -4610,7 +4588,7 @@ components:
         period:
           $ref: '#/components/schemas/SubscriptionPeriod'
         tier:
-          type: integer
+          type: number
           example: 5
         active:
           type: boolean
@@ -5019,12 +4997,12 @@ components:
           type: string
           minLength: 1
         signatureSizeInBytes:
-          type: integer
+          type: number
         fileMd5:
           type: string
           minLength: 1
         fileSizeInBytes:
-          type: integer
+          type: number
       required:
         - signatureMd5
         - signatureSizeInBytes
@@ -5084,11 +5062,11 @@ components:
           minLength: 1
           example: Avatar-MyAvatar-Un.file_00000000-0000-0000-0000-000000000000.1.unitypackage
         nextPartNumber:
-          type: integer
+          type: number
           minimum: 0
           example: 0
         maxParts:
-          type: integer
+          type: number
           minimum: 1
           example: 1000
         parts:
@@ -5162,6 +5140,10 @@ components:
           type: string
         friendKey:
           type: string
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
       required:
         - id
         - displayName
@@ -6580,7 +6562,6 @@ components:
         - use
         - eu
         - jp
-        - unknown
       description: Instance region
     InstanceOwnerId:
       example: usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469
@@ -6648,7 +6629,6 @@ components:
         - us
         - use
         - usw
-        - usx
         - eu
         - jp
         - unknown
@@ -7645,11 +7625,13 @@ components:
         last_login:
           type: string
           description: Either a date-time or empty string.
-        last_mobile:
-          type: string
-          nullable: true
         last_platform:
           $ref: '#/components/schemas/Platform'
+        last_mobile:
+          type: string
+          format: date-time
+          description: Either a date-time or empty string.
+          nullable: true
         location:
           $ref: '#/components/schemas/WorldID'
         note:
@@ -7705,6 +7687,7 @@ components:
         - last_activity
         - last_login
         - last_platform
+        - platform
         - profilePicOverride
         - profilePicOverrideThumbnail
         - pronouns
@@ -7723,7 +7706,7 @@ components:
           type: string
           format: date
         acceptedTOSVersion:
-          type: integer
+          type: number
         tags:
           description: ' '
           type: array
@@ -9911,13 +9894,6 @@ components:
       schema:
         $ref: '#/components/schemas/GroupSearchSort'
       description: The sort order of Group Member results
-    groupMemberRoleFilter:
-      name: roleId
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/GroupRoleID'
-      description: Only returns members with a specific groupRoleId
     groupRoleId:
       name: groupRoleId
       in: path
